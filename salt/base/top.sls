@@ -9,10 +9,13 @@ base:
   'lvs-slave':
     - zabbix.lvs
     - zabbix.sudo
-  'nginx':
+  'nginx1':
+    - zabbix.nginx_status
+  'nginx2':
     - zabbix.nginx_status
   'mysql-master':
     - zabbix.check_mysql
+    - zabbix.mysql_slave 
   'mysql-slave':
     - zabbix.check_mysql
     - zabbix.mysql_slave 
@@ -21,7 +24,7 @@ prod:
     - keepalived
   'lvs-slave':
     - keepalived
-  'nginx':
+  'nginx1':
     - nginx
     - vip
     - nginx.status
@@ -29,7 +32,18 @@ prod:
     - nginx.php-lb
     - nginx.www-lb
     - nginx.jj-lb
-  'haproxy':
+  'nginx2':
+    - nginx
+    - vip
+    - nginx.status
+    - nginx.upstream
+    - nginx.php-lb
+    - nginx.www-lb
+    - nginx.jj-lb
+  'haproxy1':
+    - haproxy
+    - vip
+  'haproxy2':
     - haproxy
     - vip
   'tomcat':
@@ -39,6 +53,10 @@ prod:
     - nginx
     - php
     - nginx.php
+  'nfs':
+    - nfs
+  'rsync':
+    - rsync 
   'mysql-master':
     - mysql
   'mysql-slave':
