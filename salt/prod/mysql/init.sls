@@ -25,7 +25,7 @@
     - mode: 755
   cmd.run:
     - name: chkconfig --add mysqld
-    - unless: chkconfig list |grep mysqld
+    - unless: chkconfig --list |grep mysqld
     - require:
       - file: /etc/init.d/mysqld
   service.running:

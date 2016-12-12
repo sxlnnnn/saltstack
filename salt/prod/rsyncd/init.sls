@@ -18,7 +18,7 @@ rsync:
     - mode: 755 
   cmd.run:
     - name: chkconfig --add rsyncd 
-    - unless: chkconfig list |grep rsyncd
+    - unless: chkconfig --list |grep rsyncd
     - require:
       - file: /etc/init.d/rsyncd
   service.running:
